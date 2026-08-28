@@ -4,6 +4,7 @@
 # 仓库文档
 !.gitignore
 !README.md
+!FONTS.md
 
 # 当前维护的桌面配置
 !assets/

@@ -202,6 +202,8 @@ command -v Hyprland waybar mako rofi kitty fish lf thunar awww-daemon waypaper n
 
 界面使用 `JetBrainsMono Nerd Font` 和 Nerd Font 图标。普通 JetBrains Mono 不包含 Waybar 所需的全部图标，请按上面的步骤安装 Nerd Font 版本。
 
+当前系统的实际字体回退、各组件字号、DPI 和间距记录见 [`FONTS.md`](FONTS.md)。迁移后观感不一致时，应先按照该文档核对 Fontconfig 匹配结果。
+
 Rofi 使用的主题已经包含在仓库中：
 
 ```text
