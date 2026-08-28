@@ -1,0 +1,45 @@
+# ~/.config 中默认忽略未明确纳入仓库的应用配置和运行状态
+*
+
+# 仓库文档
+!.gitignore
+!README.md
+
+# 当前维护的桌面配置
+!Thunar/
+!Thunar/uca.xml
+!fish/
+!fish/config.fish
+!fish/functions/
+!fish/functions/f.fish
+fish/fish_variables
+!gtk-3.0/
+!gtk-3.0/settings.ini
+!hypr/
+!hypr/hyprland.lua
+!hypr/scripts/
+!hypr/scripts/*.py
+!kitty/
+!kitty/**
+!lf/
+!lf/**
+!mako/
+!mako/config
+!networkmanager-dmenu/
+!networkmanager-dmenu/config.ini
+!rofi/
+!rofi/config.rasi
+!rofi/themes/
+!rofi/themes/glue_pro_blue.rasi
+!waybar/
+!waybar/Waybar-3.0/
+!waybar/Waybar-3.0/config
+!waybar/Waybar-3.0/style.css
+!waybar/scripts/
+!waybar/scripts/gpu-smart.sh
+!waypaper/
+!waypaper/config.ini
+
+# 生成文件始终忽略
+__pycache__/
+*.py[cod]

@@ -1,0 +1,6 @@
+
+configuration {
+    drun-reload-desktop-cache: true;
+}
+
+@theme "~/.config/rofi/themes/glue_pro_blue.rasi"
