@@ -6,6 +6,10 @@
 !README.md
 
 # 当前维护的桌面配置
+!assets/
+!assets/fcitx5/
+!assets/fcitx5/Hyprland-Blue/
+!assets/fcitx5/Hyprland-Blue/**
 !Thunar/
 !Thunar/uca.xml
 !fish/
@@ -13,6 +17,9 @@
 !fish/functions/
 !fish/functions/f.fish
 fish/fish_variables
+!fcitx5/
+!fcitx5/conf/
+!fcitx5/conf/classicui.conf
 !gtk-3.0/
 !gtk-3.0/settings.ini
 !hypr/

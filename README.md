@@ -10,6 +10,8 @@
 - `rofi/`：程序启动器
 - `kitty/`：终端配置
 - `waypaper/`：壁纸管理器配置
+- `assets/fcitx5/Hyprland-Blue/`：Fcitx5 自定义皮肤资源
+- `fcitx5/conf/classicui.conf`：Fcitx5 候选框样式和皮肤选择
 - `fish/`：Fish 代理配置和 Fastfetch 快捷函数
 - `lf/`：终端文件管理器配置
 - `networkmanager-dmenu/`：Rofi 网络菜单
@@ -52,7 +54,7 @@ Hyprland --version
 这条命令只安装 Ubuntu 24.04 仓库中可直接获得的外围组件，不包含 Hyprland 本体和后面单独安装的程序：
 
 ```bash
-sudo apt update && sudo apt install -y software-properties-common && sudo add-apt-repository -y universe && sudo apt update && sudo apt install -y waybar mako-notifier rofi kitty fish lf thunar network-manager network-manager-gnome network-manager-config-connectivity-ubuntu blueman grim slurp wl-clipboard brightnessctl playerctl pavucontrol pipewire wireplumber jq libnotify-bin htop filelight python3 python3-pip python3-gi gir1.2-nm-1.0 pipx git curl build-essential flatpak fontconfig libwayland-dev wayland-protocols liblz4-dev
+sudo apt update && sudo apt install -y software-properties-common && sudo add-apt-repository -y universe && sudo apt update && sudo apt install -y waybar mako-notifier rofi kitty fish lf thunar fcitx5 fcitx5-chinese-addons network-manager network-manager-gnome network-manager-config-connectivity-ubuntu blueman grim slurp wl-clipboard brightnessctl playerctl pavucontrol pipewire wireplumber jq libnotify-bin htop filelight python3 python3-pip python3-gi gir1.2-nm-1.0 pipx git curl build-essential flatpak fontconfig libwayland-dev wayland-protocols liblz4-dev
 ```
 
 不同 Ubuntu 软件源中，Mako 的包名可能是 `mako-notifier`；如果提示找不到，先执行：
@@ -215,6 +217,16 @@ git clone <你的 GitHub 仓库地址> ~/dotfiles
 cp -a ~/.config ~/.config.backup
 cp -a ~/dotfiles/. ~/.config/
 ```
+
+Fcitx5 的皮肤资源不属于 `~/.config`，需要再复制到用户数据目录：
+
+```bash
+mkdir -p ~/.local/share/fcitx5/themes
+cp -a ~/.config/assets/fcitx5/Hyprland-Blue ~/.local/share/fcitx5/themes/
+fcitx5 -r -d
+```
+
+仓库中的 `fcitx5/conf/classicui.conf` 已将亮色和暗色皮肤都设置为 `Hyprland-Blue`。仓库不包含个人词库、输入历史或 Rime 生成数据。
 
 不要在一个已有大量应用配置的 `~/.config` 中直接执行强制覆盖或删除命令。仓库中的 `.gitignore` 只控制 Git 跟踪范围，不会删除本机其他配置。
 
