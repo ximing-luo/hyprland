@@ -19,10 +19,44 @@ window#waybar {
   border-radius: 10px;
 }
 
+menu,
+menu * {
+  font-size: 14px;
+}
+
+menu {
+  padding: 4px;
+  color: #f2f2f2;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(11, 152, 228, 0.45);
+  border-radius: 10px;
+}
+
+menuitem {
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+menuitem:hover {
+  color: #a6da95;
+  background-color: rgba(166, 218, 149, 0.14);
+}
+
+menuitem:disabled {
+  color: rgba(202, 211, 245, 0.45);
+}
+
+menu separator {
+  min-height: 1px;
+  margin: 4px 2px;
+  background-color: rgba(202, 211, 245, 0.30);
+}
+
 #custom-launcher {
   font-size: 16px;
   color: #00bfff;
   padding-right: 10px;
+  padding-bottom: 2px;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -83,7 +117,7 @@ window#waybar {
 
 #temperature {
   color: #8aadf4;
-  padding: 0px 12px 0px 0px;
+  padding: 0;
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -150,6 +184,9 @@ window#waybar {
 
 #battery {
   color: #a6da95;
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   /* margin: 0px 10px 0px 0px; */
 }
 
@@ -163,13 +200,13 @@ window#waybar {
 
 #backlight {
   color: #eed49f;
-  padding: 0px 10px 0px 10px;
+  padding: 0px 5px 0px 0px;
   border-radius: 5px 0px 0px 5px;
 }
 
 #pulseaudio {
   color: #91d7e3;
-  padding: 0px 10px 0px 0px;
+  padding: 0;
   border-radius: 0px 5px 5px 0px;
 }
 
@@ -180,18 +217,39 @@ window#waybar {
 
 #custom-bluetooth {
   color: #68b0d6;
+  font-size: 13px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#custom-uptime {
+  color: #c6a0f6;
+  font-size: 12px;
+  padding-left: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   background-color: rgba(0, 0, 0, 0);
 }
 
 #network {
   color: #c6a0f6;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   margin-right: 0px;
   background-color: rgba(0, 0, 0, 0);
 }
 
 #custom-dot {
   color: #6e738d;
-  padding-right: 10px;
+  padding: 0 12px;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#custom-dot-bluetooth {
+  color: #6e738d;
+  padding: 0 12px 0 7px;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -220,8 +278,7 @@ window#waybar {
 
 #custom-filler {
   color: #6e738d;
-  padding-left: 0px;
-  padding-right: 9px;
+  padding: 0 12px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -238,13 +295,14 @@ window#waybar {
 
 #clock {
   padding-left: 10px;
+  font-size: 16px;
   color: #cad3f5;
 }
 
 #custom-playerctl {
-  padding: 0px 5px 0px 10px;
+  padding: 0;
   border-radius: 16px;
-  margin: 5px 7px;
+  margin: 5px 0;
   font-weight: normal;
   font-style: normal;
   font-size: 13px;
@@ -252,8 +310,11 @@ window#waybar {
 }
 
 #custom-niflveil {
-    padding: 0 10px;
-    color: #88c0d0;
+  color: #88c0d0;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 10px;
 }
 
 #custom-niflveil.empty {

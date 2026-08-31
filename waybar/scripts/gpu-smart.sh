@@ -44,6 +44,7 @@ get_parsed_gpu_info() {
     if [ -z "$mem_gb" ]; then
         mem_gb="0.0"
     fi
+    mem_gb=$(printf "%.1f" "$mem_gb")
     
     echo "$usage $mem_percentage $mem_gb $temp $power"
 }
