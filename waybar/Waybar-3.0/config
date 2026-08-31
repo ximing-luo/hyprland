@@ -16,11 +16,9 @@
     "custom/gpu-info",
     "temperature",
     "custom/filler",
-    "custom/playerctl",
-    "custom/filler",
     "disk",
-    "custom/filler",
-    "custom/uptime"
+    "custom/uptime",
+    "custom/playerctl"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -58,18 +56,19 @@
     "on-click" : ""
   },
      "disk": {
-    "interval": 1,
-    "format": "<span color=\"#68b0d6\"></span> {}%",
+    "interval": 5,
+    "format": "<span color=\"#68b0d6\"></span> {percentage_used}%",
     "on-click": "filelight /",
     "on-click-right": "filelight /home/"
   },
   "hyprland/workspaces": {
     "all-outputs": true,
     "active-only": false,
+    "ignore-workspaces": ["^__floatstash_magic$"],
     "on-click": "activate",
     "format": "{icon}",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-up": "$HOME/.config/hypr/scripts/cycle_workspace.py next",
+    "on-scroll-down": "$HOME/.config/hypr/scripts/cycle_workspace.py prev",
     "format-icons": {
       "1": "",
       "2": "",
@@ -109,21 +108,21 @@
   },
 
   "cpu": {
-    "interval": 10,
-    "format": " {usage}% ",
+    "interval": 1,
+    "format": " {usage}%",
     "max-length": 10,
     "on-click": "htop"
   },
   "memory": {
-    "interval": 30,
-    "format": " {}% ",
+    "interval": 1,
+    "format": " {}%",
     "format-alt": " {used:0.1f}G",
     "max-length": 10,
     "on-click-right": "htop"
   },
   "custom/gpu-info": {
     "format": "{}",
-    "interval": 5,
+    "interval": 1,
     "exec": "$HOME/.config/waybar/scripts/gpu-smart.sh",
     "return-type": "json",
     "on-click": "$HOME/.config/waybar/scripts/gpu-smart.sh toggle && pkill -RTMIN+8 waybar",
@@ -137,6 +136,7 @@
     "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
   "network": {
+    "interval": 1,
     "format-wifi": "󰒢 {essid}",
     "format-alt" : "󰒢 {bandwidthTotalBits}",
     "on-click": "",
@@ -157,17 +157,17 @@
     },
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
-    "interval": 5
+    "interval": 1
   },
   "battery": {
     "bat": "BAT1",
-    "interval": 10,
+    "interval": 1,
     "states": {
       "warning": 30,
       "critical": 15
     },
     "format": " {icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
+    "format-charging": " {icon} {capacity}%",
     "format-icons": ["", "", "", "", "", "", "", "", "", ""],
     "max-length": 25,
     "tooltip": false
@@ -191,7 +191,7 @@
    "format": "{}",
    "return-type": "json",
    "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
-   "interval": 2,
+   "interval": 1,
    "on-click": "blueman-manager"
  },
   "custom/niflveil": {
@@ -206,6 +206,7 @@
 
   "temperature": {
     "thermal-zone": 0,
+    "interval": 1,
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"

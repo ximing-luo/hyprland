@@ -97,18 +97,18 @@ menu separator {
 
 #cpu {
   color: #eed49f;
-  padding: 0px 10px 0px 12px;
+  padding: 0 13px;
   border-radius: 5px 0px 0px 5px;
 }
 
 #memory {
   color: #a6da95;
-  padding: 0px 10px 0px 0px;
+  padding: 0 13px 0 0;
 }
 
 #custom-gpu-info {
   color: #f5a97f;  /* 橙色 */
-  padding: 0px 10px 0px 0px;
+  padding: 0 13px 0 0;
   font-size: 12px;
   background: transparent;
   margin-top: 5px;
@@ -190,6 +190,10 @@ menu separator {
   /* margin: 0px 10px 0px 0px; */
 }
 
+#battery.charging {
+  color: #ed8796;
+}
+
 #pulseaudio,
 #backlight {
   font-size: 12px;
@@ -226,7 +230,7 @@ menu separator {
 #custom-uptime {
   color: #c6a0f6;
   font-size: 12px;
-  padding-left: 6px;
+  padding-left: 13px;
   margin-top: 5px;
   margin-bottom: 5px;
   background-color: rgba(0, 0, 0, 0);
@@ -278,7 +282,7 @@ menu separator {
 
 #custom-filler {
   color: #6e738d;
-  padding: 0 12px;
+  padding: 0 13px 0 9px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -300,7 +304,7 @@ menu separator {
 }
 
 #custom-playerctl {
-  padding: 0;
+  padding: 0 0 0 13px;
   border-radius: 16px;
   margin: 5px 0;
   font-weight: normal;

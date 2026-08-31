@@ -291,6 +291,7 @@ hl.config({
 
 -- 更多关键字配置见 https://wiki.hypr.land/Configuring/Start/
 local mainMod = "SUPER" -- 定义主修饰键为Super键（Windows键/Command键）
+local toggle_workspace_floats = dofile(os.getenv("HOME") .. "/.config/hypr/scripts/toggle_workspace_floats.lua")
 
 -- 快捷键绑定示例，更多配置见 https://wiki.hypr.land/Configuring/Basics/Binds/
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal)) -- Super+Q: 启动终端
@@ -417,8 +418,8 @@ hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic")) -- Super+S:
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" })) -- Super+Shift+S: 将当前窗口移动到特殊工作区
 
 -- 使用主修饰键+鼠标滚轮切换工作区
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e-1" })) -- Super+鼠标滚轮向下: 切换到上一个工作区
-hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e+1" })) -- Super+鼠标滚轮向上: 切换到下一个工作区
+hl.bind(mainMod .. " + mouse_down", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/cycle_workspace.py prev")) -- Super+鼠标滚轮向下: 切换到上一个工作区
+hl.bind(mainMod .. " + mouse_up", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/cycle_workspace.py next")) -- Super+鼠标滚轮向上: 切换到下一个工作区
 
 -- 使用主修饰键+鼠标左/右键拖动来移动/调整窗口大小
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true }) -- Super+鼠标左键拖动: 移动窗口
@@ -450,7 +451,7 @@ hl.bind(mainMod .. " + SHIFT + Tab", hl.dsp.group.prev()) -- Super+Shift+Tab: �
 -- -------- 窗口管理 --------
 
 -- [hidden] 收起/恢复当前工作区的浮动窗口
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/toggle_workspace_floats.py"))
+hl.bind(mainMod .. " + W", toggle_workspace_floats)
 
 -- -------- 窗口移动 --------
 -- hl.bind("SUPER + SHIFT + left/up/right/down", ...) -- 方向键移动窗口 (注释格式)
