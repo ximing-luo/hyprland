@@ -482,7 +482,7 @@ end)
 
 -- -------- 窗口循环 --------
 hl.bind("ALT + ESCAPE", hl.dsp.exec_cmd("niflveil minimize"))
-hl.bind("ALT + R", hl.dsp.exec_cmd("$HOME/.local/bin/niflveil-restore")) -- [hidden] rofi 恢复菜单（替代 eww）
+hl.bind("ALT + R", hl.dsp.exec_cmd("$HOME/.config/hypr/scripts/niflveil-restore")) -- [hidden] rofi 恢复菜单（替代 eww）
 
 
 -- -------- 窗口规则配置 --------

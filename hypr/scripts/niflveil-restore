@@ -1,0 +1,31 @@
+#!/bin/sh
+# niflveil-restore — 用 rofi 展示 niflveil 最小化的窗口，选中即恢复
+# 依赖: rofi, jq, notify-send；核心调用 niflveil restore <address>
+# 数据来源: /tmp/minimize-state/windows.json（minimize 时写入，restore 后自动移除）
+
+CACHE="/tmp/minimize-state/windows.json"
+NIFL="niflveil"
+ENTRIES="/tmp/niflveil-rofi-entries"
+
+# 没有缓存或窗口数为 0 时提示后退出
+COUNT=$(jq 'length' "$CACHE" 2>/dev/null) || COUNT=0
+if [ "$COUNT" -eq 0 ]; then
+    notify-send "niflveil" "没有已最小化的窗口"
+    exit 0
+fi
+
+# 生成 rofi 条目：图标 + 类名 - 标题，末尾追加"全部恢复"
+jq -r '.[] | "\(.icon) \(.class) - \(.original_title)"' "$CACHE" > "$ENTRIES"
+printf '%s\n' "全部恢复（$COUNT 个窗口）" >> "$ENTRIES"
+
+# rofi 单选返回行号（0 起）；取消则退出
+LINE=$(rofi -dmenu -format i -i -no-custom -p "恢复窗口" < "$ENTRIES") || exit 0
+[ -z "$LINE" ] && exit 0
+
+# 最后一行是"全部恢复"，其余按行号对应缓存里的窗口地址
+if [ "$LINE" -eq "$COUNT" ]; then
+    "$NIFL" restore-all
+else
+    ADDR=$(jq -r ".[$LINE].address" "$CACHE")
+    "$NIFL" restore "$ADDR"
+fi

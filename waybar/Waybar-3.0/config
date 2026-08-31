@@ -20,7 +20,7 @@
     "custom/filler",
     "disk",
     "custom/filler",
-    "custom/bluetooth"
+    "custom/uptime"
   ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
@@ -29,7 +29,8 @@
     "backlight",
     "pulseaudio",
     "custom/dot",
-    "custom/separator",
+    "custom/bluetooth",
+    "custom/dot-bluetooth",
     "network",
     "custom/niflveil",
     "custom/dot",
@@ -49,11 +50,18 @@
         "Paused": "<span foreground='#cdd6f4'> 󰏥 </span>"
       }
     },
+    "custom/uptime": {
+    "format": "  {}",
+    "return-type": "json",
+    "interval": 1,
+    "exec": "$HOME/.config/waybar/scripts/uptime.sh",
+    "on-click" : ""
+  },
      "disk": {
     "interval": 1,
-    "format": "<span color=\"#68b0d6\"> </span> {}%",
+    "format": "<span color=\"#68b0d6\"></span> {}%",
     "on-click": "filelight /",
-    "on-click-right": "filelight $HOME"
+    "on-click-right": "filelight /home/"
   },
   "hyprland/workspaces": {
     "all-outputs": true,
@@ -82,10 +90,13 @@
     "spacing": 8
   },
   "custom/filler": {
-    "format": " "
+    "format": ""
   },
   "custom/dot": {
-    "format": " "
+    "format": ""
+  },
+  "custom/dot-bluetooth": {
+    "format": ""
   },
   "custom/clock-icon": {
     "format": ""
@@ -120,6 +131,7 @@
     "max-length": 15
   },
   "backlight": {
+    "device": "amdgpu_bl1",
     "format": "{icon} {percent} ",
     "tooltip": false,
     "format-icons": ["", "", "", "", "", "", "", "", ""]
@@ -148,6 +160,7 @@
     "interval": 5
   },
   "battery": {
+    "bat": "BAT1",
     "interval": 10,
     "states": {
       "warning": 30,
@@ -155,7 +168,7 @@
     },
     "format": " {icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
-    "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+    "format-icons": ["", "", "", "", "", "", "", "", "", ""],
     "max-length": 25,
     "tooltip": false
   },
@@ -175,13 +188,16 @@
   },
 
  "custom/bluetooth": {
-   "format": "  ",
+   "format": "{}",
+   "return-type": "json",
+   "exec": "$HOME/.config/waybar/scripts/bluetooth.sh",
+   "interval": 2,
    "on-click": "blueman-manager"
  },
   "custom/niflveil": {
     "format": "{}",
     "exec": "niflveil show",
-    "on-click": "niflveil restore",
+    "on-click": "$HOME/.config/waybar/scripts/niflveil-tray.py",
     "return-type": "json",
     "interval": "once",
     "signal": 8
@@ -189,6 +205,7 @@
   "custom/window-icon": {},
 
   "temperature": {
+    "thermal-zone": 0,
     "critical-threshold": 80,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"

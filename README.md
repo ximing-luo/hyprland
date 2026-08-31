@@ -5,7 +5,7 @@
 ## 包含内容
 
 - `hypr/`：Hyprland 0.55+ Lua 配置和窗口管理脚本
-- `waybar/`：当前使用的配置、样式和 GPU 脚本
+- `waybar/`：当前使用的配置、样式及其实际调用脚本
 - `mako/`：通知样式
 - `rofi/`：程序启动器
 - `kitty/`：终端配置
@@ -23,8 +23,13 @@ Waybar 只保留当前实际使用的以下文件：
 ```text
 waybar/Waybar-3.0/config
 waybar/Waybar-3.0/style.css
+waybar/scripts/bluetooth.sh
 waybar/scripts/gpu-smart.sh
+waybar/scripts/niflveil-tray.py
+waybar/scripts/uptime.sh
 ```
+
+NiflVeil 最小化、Waybar 图标面板和 Rofi 恢复菜单的关系及安装方法见 [`NIFLVEIL.md`](NIFLVEIL.md)。
 
 ## Ubuntu 24.04 兼容性
 
@@ -176,11 +181,13 @@ AppImage 的实际文件名可能变化，执行前应先用 `ls ~/Downloads/Sni
 
 ### 9. NiflVeil
 
-NiflVeil 是当前机器上的自定义程序，不属于 Ubuntu、Flatpak 或公开上游软件包。目前没有可用的源码仓库，因此无法给出可复现的 Ubuntu 安装命令。
+NiflVeil 是当前机器上的自定义程序，不属于 Ubuntu、Flatpak 或公开上游软件包。目前没有可用的公开安装源，因此无法仅凭本仓库安装核心程序。
+
+仓库已经包含 Waybar 图标面板和 Rofi 恢复脚本；核心程序安装位置、调用链、依赖和验证方法见 [`NIFLVEIL.md`](NIFLVEIL.md)。
 
 在源码重新发布并提供安装方式前，其他用户应注释以下功能：
 
-- Hyprland 的 `Alt+Escape`、`Alt+R` 绑定
+- Hyprland 的 `Alt+Escape` 绑定
 - Waybar 的 `custom/niflveil` 模块
 
 ### 10. 其他可选程序
@@ -284,7 +291,7 @@ Snipaste
 niflveil
 ```
 
-这些程序需要位于 `PATH` 中。未安装时，相应自启动项或快捷键不可用。`Alt+R` 还引用未包含在仓库中的 `~/.local/bin/niflveil-restore`。
+这些程序需要位于 `PATH` 中。未安装时，相应自启动项或快捷键不可用。`Alt+R` 使用仓库内的 `hypr/scripts/niflveil-restore`。
 
 LF 配置还引用若干 `~/.local/bin/` 自用脚本，目标机器缺少它们时，相应 LF 快捷键不可用。
 

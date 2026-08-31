@@ -5,6 +5,7 @@
 !.gitignore
 !README.md
 !FONTS.md
+!NIFLVEIL.md
 
 # 当前维护的桌面配置
 !assets/
@@ -27,6 +28,7 @@ fish/fish_variables
 !hypr/hyprland.lua
 !hypr/scripts/
 !hypr/scripts/*.py
+!hypr/scripts/niflveil-restore
 !kitty/
 !kitty/**
 !lf/
@@ -45,6 +47,9 @@ fish/fish_variables
 !waybar/Waybar-3.0/style.css
 !waybar/scripts/
 !waybar/scripts/gpu-smart.sh
+!waybar/scripts/bluetooth.sh
+!waybar/scripts/niflveil-tray.py
+!waybar/scripts/uptime.sh
 !waypaper/
 !waypaper/config.ini
 
